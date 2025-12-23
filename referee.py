@@ -208,6 +208,7 @@ class Referee(idaapi.plugin_t):
     wanted_hotkey = ""
 
     def init(self):
+        self.inited = False
         if not idaapi.init_hexrays_plugin():
             return idaapi.PLUGIN_SKIP
 
