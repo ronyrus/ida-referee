@@ -146,8 +146,8 @@ def add_struct_xrefs(cfunc):
                 # to get the structure/member associated with its use
                 typ = e.x.type
 
-                if e.op == idaapi.cot_memptr:
-                    typ.remove_ptr_or_array()
+                if e.op == idaapi.cot_memptr and typ.is_ptr_or_array():
+                    typ = typ.get_ptrarr_object()
 
                 strname = typ.dstr()
                 if strname.startswith("struct "):
