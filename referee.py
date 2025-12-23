@@ -121,7 +121,6 @@ def add_struct_xrefs(cfunc):
                                ea, strname,
                                member_name,
                                flags_to_str(flags)))
-            self.save()
 
         def visit_expr(self, e):
             dr = idaapi.dr_R | idaapi.XREF_USER
@@ -206,6 +205,7 @@ def add_struct_xrefs(cfunc):
 
     adder = xref_adder_t(cfunc)
     adder.apply_to_exprs(cfunc.body, None)
+    adder.save()
 
 
 def callback(*args):
