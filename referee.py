@@ -18,18 +18,20 @@ NETNODE_TAG = 'X'
 
 def is_assn(t):
     return (
-        t == idaapi.cot_asg or
-        t == idaapi.cot_asgbor or
-        t == idaapi.cot_asgxor or
-        t == idaapi.cot_asgband or
-        t == idaapi.cot_asgsub or
-        t == idaapi.cot_asgmul or
-        t == idaapi.cot_asgsshr or
-        t == idaapi.cot_asgushr or
-        t == idaapi.cot_asgsdiv or
-        t == idaapi.cot_asgudiv or
-        t == idaapi.cot_asgsmod or
-        t == idaapi.cot_asgumod)
+        t == idaapi.cot_asg or       # =
+        t == idaapi.cot_asgbor or    # |=
+        t == idaapi.cot_asgxor or    # ^=
+        t == idaapi.cot_asgband or   # &=
+        t == idaapi.cot_asgadd or    # +=
+        t == idaapi.cot_asgsub or    # -=
+        t == idaapi.cot_asgmul or    # *=
+        t == idaapi.cot_asgsshr or   # >>= (signed)
+        t == idaapi.cot_asgushr or   # >>= (unsigned)
+        t == idaapi.cot_asgshl or    # <<=
+        t == idaapi.cot_asgsdiv or   # /= (signed)
+        t == idaapi.cot_asgudiv or   # /= (unsigned)
+        t == idaapi.cot_asgsmod or   # %= (signed)
+        t == idaapi.cot_asgumod)     # %= (unsigned)
 
 
 def is_incdec(t):
