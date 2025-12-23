@@ -2,6 +2,7 @@
 """
 Referee creates struct xrefs for decompiled functions
 """
+import ast
 import logging
 import traceback
 
@@ -52,7 +53,7 @@ def add_struct_xrefs(cfunc):
             try:
                 data = self.node.getblob_ea(self.cfunc.entry_ea, NETNODE_TAG)
                 if data:
-                    xrefs = eval(data)
+                    xrefs = ast.literal_eval(data.decode('utf-8'))
                     log.debug('Loaded {} xrefs'.format(len(xrefs)))
                     return xrefs
             except:
